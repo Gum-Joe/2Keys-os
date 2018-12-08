@@ -5,8 +5,8 @@
 
 .section ".text.boot" // So this get placed at start of kernal
 
-.globl _start
-_start: // Start exectuion here
+.globl _boot_start
+_boot_start: // Start exectuion here
 	// These lines get CPUID and runs our code if the current core is core 0
 	// Else it halts that core (so the kernal only runs once)
 	mrs	x0, mpidr_el1 // Loads a value from sys register to one of general purpose register (x0 to x30)
