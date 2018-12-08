@@ -1,7 +1,7 @@
 // Main boot file
 // Ideals cores & loads main function
 
-#include "memory.S"
+#include "constants.S" // Doesn't actually do anything, is included in Rust code
 
 .section ".text.boot" // So this get placed at start of kernal
 
@@ -13,14 +13,15 @@ _boot_start: // Start exectuion here
 	and	x0, x0,#0xFF // This checks the CPUID
 	cbz	x0, master // If last result is 0, jump to master
 	// Hangs if else
-	b	proc_hang
+	b	core_hang
 
-// Basically an infinity loop
-proc_hang: 
-	b proc_hang
+// Halt cores
+core_hang: 
+	bne halt
+	// b core_hang // Ininfity loop
 
 // Master function that loads our Rust start function
 master:
 	// These lines setup our stack & jump to the rust kernel_main
-	mov	sp, 0x8000
+	mov	sp, STACK_MEMORY
 	bl	_exec_start // Start rust execition
