@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Setup dev env
 
 echo Setting up dev env...

@@ -23,4 +23,4 @@ proc_hang:
 master:
 	// These lines setup our stack & jump to the rust kernel_main
 	mov	sp, 0x8000
-  bl	_exec_start // Start rust execition
+	bl	_exec_start // Start rust execition
