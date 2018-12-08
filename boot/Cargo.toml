@@ -1,0 +1,8 @@
+[package]
+name = "twokeys_os_boot"
+version = "0.1.0"
+authors = ["Kishan <kishansambhi@hotmail.co.uk>"]
+edition = "2018"
+
+[dependencies]
+r0 = "0.2.2" # for zero bss

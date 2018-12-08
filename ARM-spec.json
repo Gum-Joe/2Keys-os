@@ -1,0 +1,11 @@
+{
+  "llvm-target": "aarch64-unknown-none",
+  "arch": "x86_64",
+  "os": "none",
+  "executables": true,
+  "linker-flavor": "ld.lld",
+  "linker": "rust-lld",
+  "panic-strategy": "abort",
+  "disable-redzone": true,
+  "features": "-mmx,-sse,+soft-float"
+}
