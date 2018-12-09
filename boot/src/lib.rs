@@ -36,7 +36,7 @@ pub unsafe extern "C" fn _exec_start() -> ! {
 
     main(); // BEGIN MAIN EXECUTION
 }
-global_asm!(include_str!("./constants.S")); // Include constants
+// global_asm!(include_str!("./constants.S")); // Include constants
 global_asm!(include_str!("./main.S")); // Include boot code
 
 

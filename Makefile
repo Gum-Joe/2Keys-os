@@ -13,7 +13,7 @@ QEMU_TARGET = system-aarch64
 QEMU_ARGS = -M raspi3 -kernel $(IMAGE_FINAL_OUTPUT)
 
 # Builds the kernel
-build:
+build: src/main.rs
 	$(RUSTUP) cargo xbuild --target=$(TARGET_JSON)
 
 # Creates image
@@ -22,8 +22,11 @@ image: build
 	$(OBJCOPY) target/$(TARGET_JSON)/debug/twokeys-os $(IMAGE_OUTPUT)
 	cp $(IMAGE_OUTPUT) $(IMAGE_FINAL_OUTPUT)
 
+image_windows: build
+	$(OBJCOPY) target/$(TARGET_JSON)/debug/twokeys-os kernel8.img
+
 qemu: image
 	qemu-$(QEMU_TARGET) $(QEMU_ARGS)
 
-qemu_windows:
-	qemu-$(QEMU_TARGET) $(QEMU_ARGS)
+qemu_windows: 
+	qemu-$(QEMU_TARGET) $(QEMU_ARGS) -serial null -serial stdio

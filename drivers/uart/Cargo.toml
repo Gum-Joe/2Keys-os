@@ -5,3 +5,5 @@ authors = ["Kishan <kishansambhi@hotmail.co.uk>"]
 description = "Minimal drivers for UART0 and UART1.  Used at boot up directly, instead of being dynamically loaded"
 
 [dependencies]
+driver_core = { path = "../core" }
+register = "0.2.1"

@@ -3,6 +3,7 @@
 
 #[macro_use]
 extern crate twokeys_os_boot;
+extern crate uart;
 
 use core::panic::PanicInfo;
 
@@ -17,6 +18,14 @@ fn panic(_info: &PanicInfo) -> ! {
 // Kernel load
 #[no_mangle]
 fn _rust_start() -> ! {
+    let uart = uart::uart1::MiniUart::new();
+
+    // set up serial console
+    uart.init();
+
+    // uart.getc(); // Press a key first before being greeted
+    uart.puts("Hello Rustacean!\n");
+
     loop {}
 }
 

@@ -12,6 +12,7 @@ panic = "abort"
 
 [dependencies]
 twokeys_os_boot = { path = "./boot"}
+uart = { path = "./drivers/uart"}
 
 
 [target.aarch64-unknown-none]
